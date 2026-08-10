@@ -1,4 +1,23 @@
 <app-container>
   <app-cabecalho></app-cabecalho>
-  <app-separador></app-separador>
+
+  <input
+    type="search"
+    placeholder="Digite para buscar"
+    [(ngModel)]="filtroPorTexto"
+  />
+
+  @for (letra of alfabeto; track letra) {
+    @if (filtrarContatosLetraInicial(letra).length !== 0) {
+      <app-separador>
+        {{ letra }}
+      </app-separador>
+      @for (contato of filtrarContatosLetraInicial(letra); track contato.id) {
+        <app-contato
+          [nome]="contato.nome"
+          [telefone]="contato.telefone"
+        ></app-contato>
+      }
+    }
+  }
 </app-container>
