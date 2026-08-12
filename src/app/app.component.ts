@@ -1,20 +1,9 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
-import { ContainerComponent } from './componentes/container/container.component';
-import { CabecalhoComponent } from './componentes/cabecalho/cabecalho.component';
-import { SeparadorComponent } from './componentes/separador/separador.component';
-import { ContatoComponent } from './componentes/contato/contato.component';
-import { FormsModule } from '@angular/forms';
 
-interface Contato {
-  id: number;
-  nome: string;
-  telefone: string;
-}
-
-import agenda from './agenda.json';
 import { FormularioContatoComponent } from './paginas/formulario-contato/formulario-contato.component';
+import { ListaContatosComponent } from './paginas/lista-contatos/lista-contatos.component';
 
 @Component({
   selector: 'app-root',
@@ -22,40 +11,10 @@ import { FormularioContatoComponent } from './paginas/formulario-contato/formula
   imports: [
     CommonModule,
     RouterOutlet,
-    ContainerComponent,
-    CabecalhoComponent,
-    SeparadorComponent,
-    ContatoComponent,
-    FormsModule,
     FormularioContatoComponent,
+    ListaContatosComponent,
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })
-export class AppComponent {
-  alfabeto: string = 'abcdefghijklmnopqrstuvwxyz';
-  contatos: Contato[] = agenda;
-
-  private normalizarString(texto: string): string {
-    return texto
-      .toLowerCase()
-      .normalize('NFD')
-      .replace(/[\u0300-\u036f]/g, '');
-  }
-
-  filtroPorTexto: string = '';
-
-  filtrarContatosBusca(): Contato[] {
-    return this.contatos.filter((contato) => {
-      return this.normalizarString(contato.nome).includes(
-        this.normalizarString(this.filtroPorTexto),
-      );
-    });
-  }
-
-  filtrarContatosLetraInicial(letra: string): Contato[] {
-    return this.filtrarContatosBusca().filter((contato) => {
-      return contato.nome.toLowerCase().startsWith(letra);
-    });
-  }
-}
+export class AppComponent {}
