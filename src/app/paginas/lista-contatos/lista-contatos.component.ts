@@ -9,6 +9,7 @@ import { SeparadorComponent } from '../../componentes/separador/separador.compon
 import { ContatoComponent } from '../../componentes/contato/contato.component';
 import { ContatoService } from '../../services/contato.service';
 import { Contato } from '../../componentes/contato/contato';
+import { PerfilContatoComponent } from '../perfil-contato/perfil-contato.component';
 
 @Component({
   selector: 'app-lista-contatos',
@@ -33,7 +34,9 @@ export class ListaContatosComponent implements OnInit {
   constructor(private contatoService: ContatoService) {}
 
   ngOnInit() {
-    this.contatos = this.contatoService.obterContatos();
+    this.contatoService.obterContatos().subscribe((listaContatos) => {
+      this.contatos = listaContatos;
+    });
   }
 
   private normalizarString(texto: string): string {
