@@ -16,6 +16,7 @@ export class PerfilContatoComponent implements OnInit {
   contato: Contato = {
     id: 0,
     nome: '',
+    avatar: '',
     telefone: '',
     email: '',
     aniversario: '',
@@ -36,7 +37,7 @@ export class PerfilContatoComponent implements OnInit {
   }
 
   excluir() {
-    this.contatoService.excluirPorId(this.contato.id).subscribe((contato) => {
+    this.contatoService.excluirPorId(this.contato.id).subscribe(() => {
       this.router.navigateByUrl('/lista-contatos');
     });
   }
