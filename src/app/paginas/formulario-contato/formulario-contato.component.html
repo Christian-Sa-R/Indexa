@@ -30,6 +30,9 @@
     @if (contatoForm.get("avatar")?.value !== "") {
       <figure>
         <img [src]="contatoForm.get('avatar')?.value" alt="avatar do contato" />
+        <button type="button" (click)="contatoForm.get('avatar')?.setValue('')">
+          X
+        </button>
       </figure>
     }
     <label for="nome">Nome</label>
