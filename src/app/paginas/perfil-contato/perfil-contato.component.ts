@@ -4,11 +4,17 @@ import { ContainerComponent } from '../../componentes/container/container.compon
 import { Contato } from '../../componentes/contato/contato';
 import { SeparadorComponent } from '../../componentes/separador/separador.component';
 import { ContatoService } from '../../services/contato.service';
+import { CabecalhoComponent } from '../../componentes/cabecalho/cabecalho.component';
 
 @Component({
   selector: 'app-perfil-contato',
   standalone: true,
-  imports: [ContainerComponent, SeparadorComponent, RouterLink],
+  imports: [
+    ContainerComponent,
+    SeparadorComponent,
+    RouterLink,
+    CabecalhoComponent,
+  ],
   templateUrl: './perfil-contato.component.html',
   styleUrl: './perfil-contato.component.css',
 })
